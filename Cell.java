@@ -1,9 +1,11 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Cell{
 
   int x;
   int y;
+  int hashCode;
 
   Cell(int xx, int yy){
     x=xx;
@@ -28,5 +30,9 @@ public class Cell{
 
   public String toString() {
 	  return "("+x+","+y+")";
+  }
+  
+  public boolean equals(Cell obj) {
+	    return ((obj instanceof Cell && x == ((Integer) obj.x) && y == ((Integer) obj.y)));
   }
 }
