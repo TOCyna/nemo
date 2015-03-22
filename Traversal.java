@@ -46,54 +46,22 @@ public class Traversal {
 		while(j < 2 && !foundNemo) {
 			fish = q.pop();
 			
-			//teste
-			System.out.println("");
-			System.out.print("Fish - ");
-			print(fish);
-			System.out.println("");
-			System.out.println("");
-			//System.out.println(fish.equals(new Cell(2,2)));
-			
 			neighbors = fish.neighbors();
 			
 			for(int i = 0; i < 4 && !foundNemo; i++) {
 				Cell water = neighbors.get(i);
 				
-				System.out.print(i + ": isWater: " + !ocean.isWall(water));
-				System.out.print(" - isntVisited: " + !contains(l, water));
-				System.out.println(" - equal: " + (!ocean.isWall(water) && !contains(l, water)));
-				
 				if(ocean.isNemo(water)) {
 					foundNemo = true;
 					fish = water;
-					print(fish);
+					System.out.println("Nemo is at: " + fish.toString());
 				}
 				else if((!ocean.isWall(water) && !contains(l, water))) {
-					System.out.print("add to q - ");
-					print(water);
-					System.out.println();
 					q.add(water);
 					l.add(water);
 				}
 			}
-			ListIterator<Cell> iterator = q.listIterator();
-			System.out.print("q: ");
-			while(iterator.hasNext()) {
-				print(iterator.next());
-				System.out.print(" - ");
-			}
-			System.out.println("");
-			iterator = l.listIterator();
-			System.out.print("l: ");
-			while(iterator.hasNext()) {
-				print(iterator.next());
-				System.out.print(" - ");
-			}
-			System.out.println("");
-			//j++; 
-		}
-		System.out.println("Nemo: " + ocean.nemo.toString());
-		
+		}		
 	}
 
 	static void q22() {
